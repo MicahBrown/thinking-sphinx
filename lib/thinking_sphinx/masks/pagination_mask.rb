@@ -35,6 +35,10 @@ class ThinkingSphinx::Masks::PaginationMask
     search
   end
 
+  def entry_name(options={})
+    I18n.t('helpers.page_entries_info.entry', **options.reverse_merge(default: "entry".pluralize(options[:count])))
+  end
+
   def previous_page
     search.current_page == 1 ? nil : search.current_page - 1
   end
